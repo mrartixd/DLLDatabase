@@ -1,0 +1,10 @@
+C:\Users\t154331\source\repos\WorldDatabase\WorldDatabase\bin\Debug\WorldDatabase.dll
+C:\Users\t154331\source\repos\WorldDatabase\WorldDatabase\bin\Debug\WorldDatabase.pdb
+C:\Users\t154331\source\repos\WorldDatabase\WorldDatabase\obj\Debug\WorldDatabase.csproj.CoreCompileInputs.cache
+C:\Users\t154331\source\repos\WorldDatabase\WorldDatabase\obj\Debug\WorldDatabase.dll
+C:\Users\t154331\source\repos\WorldDatabase\WorldDatabase\obj\Debug\WorldDatabase.pdb
+C:\Users\artix\source\repos\WorldDatabase\WorldDatabase\bin\Debug\WorldDatabase.dll
+C:\Users\artix\source\repos\WorldDatabase\WorldDatabase\bin\Debug\WorldDatabase.pdb
+C:\Users\artix\source\repos\WorldDatabase\WorldDatabase\obj\Debug\WorldDatabase.csproj.CoreCompileInputs.cache
+C:\Users\artix\source\repos\WorldDatabase\WorldDatabase\obj\Debug\WorldDatabase.dll
+C:\Users\artix\source\repos\WorldDatabase\WorldDatabase\obj\Debug\WorldDatabase.pdb

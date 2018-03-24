@@ -1,0 +1,5 @@
+C:\Users\Natalja\Desktop\WorldDatabase\WorldDatabase\bin\Release\WorldDatabase.dll
+C:\Users\Natalja\Desktop\WorldDatabase\WorldDatabase\bin\Release\WorldDatabase.pdb
+C:\Users\Natalja\Desktop\WorldDatabase\WorldDatabase\obj\Release\WorldDatabase.csprojResolveAssemblyReference.cache
+C:\Users\Natalja\Desktop\WorldDatabase\WorldDatabase\obj\Release\WorldDatabase.dll
+C:\Users\Natalja\Desktop\WorldDatabase\WorldDatabase\obj\Release\WorldDatabase.pdb
