@@ -53,6 +53,34 @@ namespace WorldDatabase
             return list;
         }
 
+        public static List<City> GetAllCities()
+        {
+            List<City> listcity = null;
+            using (OleDbConnection conn = ConnectionDatabase.GetConnection())
+            {
+                conn.Open();
+                string sql = "SELECT * FROM country ORDER BY name";
+                OleDbCommand cmd = new OleDbCommand(sql, conn);
+                OleDbDataReader reader = cmd.ExecuteReader();
+                listcity = new List<City>();
+                using (reader)
+                {
+                    while (reader.Read())
+                    {
+                        City city = new City();
+                        city.ID = (int)reader[0];
+                        city.Name = reader[1].ToString();
+                        city.CountryCode = reader[2].ToString();
+                        city.District = reader[3].ToString();
+                        city.Population = reader.GetDouble(4);
+                        listcity.Add(city);
+                     
+                    }
+                }
+            }
+
+           return listcity;
+        }
 
         public static List<City> GetAllCitiesbyCountryName(String country)
         {
@@ -78,7 +106,6 @@ namespace WorldDatabase
                         city.Population = reader.GetDouble(4);
                         count.Capital = city;
                         list.Add(city);
-                        
                     }
                   
                 }
