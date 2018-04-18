@@ -55,14 +55,14 @@ namespace WorldDatabase
 
         public static List<City> GetAllCities()
         {
-            List<City> listcity = null;
+            List<City> list = null;
             using (OleDbConnection conn = ConnectionDatabase.GetConnection())
             {
                 conn.Open();
-                string sql = "SELECT * FROM country ORDER BY name";
+                string sql = "select * from city";
                 OleDbCommand cmd = new OleDbCommand(sql, conn);
                 OleDbDataReader reader = cmd.ExecuteReader();
-                listcity = new List<City>();
+                list = new List<City>();
                 using (reader)
                 {
                     while (reader.Read())
@@ -73,14 +73,15 @@ namespace WorldDatabase
                         city.CountryCode = reader[2].ToString();
                         city.District = reader[3].ToString();
                         city.Population = reader.GetDouble(4);
-                        listcity.Add(city);
-                     
+                        list.Add(city);
+
                     }
+
                 }
             }
-
-           return listcity;
+            return list;
         }
+
 
         public static List<City> GetAllCitiesbyCountryName(String country)
         {
@@ -106,6 +107,7 @@ namespace WorldDatabase
                         city.Population = reader.GetDouble(4);
                         count.Capital = city;
                         list.Add(city);
+                        
                     }
                   
                 }
@@ -182,10 +184,8 @@ namespace WorldDatabase
             int arv = 1;
             using (OleDbConnection conn = ConnectionDatabase.GetConnection())
             {
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = "DELETE FROM Country WHERE [Code]=?";
-                cmd.Parameters.Add("@code", OleDbType.Char).Value = id;
+                conn.Open();
+                OleDbCommand cmd = new OleDbCommand("DELETE FROM [country] WHERE [Code] = '"+ id +"'", conn);
                 try
                 {
                     cmd.ExecuteNonQuery();
@@ -204,10 +204,8 @@ namespace WorldDatabase
             int arv = 1;
             using (OleDbConnection conn = ConnectionDatabase.GetConnection())
             {
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = "DELETE FROM City WHERE [ID]=?";
-                cmd.Parameters.Add("@id", OleDbType.Integer).Value = id;
+                conn.Open();
+                OleDbCommand cmd = new OleDbCommand("DELETE FROM [city] WHERE [ID] = "+id, conn);
                 try
                 {
                     cmd.ExecuteNonQuery();
