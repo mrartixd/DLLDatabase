@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.OleDb;
-using System.Windows.Forms;
 
 namespace WorldDatabase
 {
@@ -82,6 +81,35 @@ namespace WorldDatabase
             return list;
         }
 
+        public static List<City> GetAllCitiesByCountry(String countrycode)
+        {
+            List<City> list = null;
+            using (OleDbConnection conn = ConnectionDatabase.GetConnection())
+            {
+                conn.Open();
+                string sql = "select * from city where CountryCode = '" + countrycode + "'";
+                OleDbCommand cmd = new OleDbCommand(sql, conn);
+                OleDbDataReader reader = cmd.ExecuteReader();
+                list = new List<City>();
+                using (reader)
+                {
+                    while (reader.Read())
+                    {
+                        City city = new City();
+                        city.ID = (int)reader[0];
+                        city.Name = reader[1].ToString();
+                        city.CountryCode = reader[2].ToString();
+                        city.District = reader[3].ToString();
+                        city.Population = reader.GetDouble(4);
+                        list.Add(city);
+
+                    }
+
+                }
+            }
+            return list;
+        }
+
 
         public static List<City> GetAllCitiesbyCountryName(String country)
         {
@@ -133,7 +161,6 @@ namespace WorldDatabase
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("An Item has been successfully added", "Caption", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
                 catch
                 {
@@ -168,7 +195,6 @@ namespace WorldDatabase
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("An Item has been successfully added", "Caption", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
                 catch
                 {
