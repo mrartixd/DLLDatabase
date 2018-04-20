@@ -42,7 +42,6 @@ namespace WorldDatabase
                             city.CountryCode = country.Code;
                             city.District = readerCity[3].ToString();
                             city.Population = readerCity.GetDouble(4);
-                            country.Capital = city;
                         }
                         readerCity.Close();
                         list.Add(country);
@@ -133,7 +132,6 @@ namespace WorldDatabase
                         city.CountryCode = count.Code;
                         city.District = reader[3].ToString();
                         city.Population = reader.GetDouble(4);
-                        count.Capital = city;
                         list.Add(city);
                         
                     }
@@ -179,7 +177,7 @@ namespace WorldDatabase
             {
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = "insert into Country (Code,Name,Continent,Region,SurfaceArea,InderYear,Population, GovernmentForm,HeadOfState,Capital) values (?,?,?,?,?,?,?,?,?,?)";
+                cmd.CommandText = "insert into country (Code,Name,Continent,Region,SurfaceArea,IndepYear,Population,GovernmentForm,HeadOfState) values (?,?,?,?,?,?,?,?,?)";
                 cmd.Parameters.AddWithValue("@code", country.Code);
                 cmd.Parameters.AddWithValue("@name", country.Name);
                 cmd.Parameters.AddWithValue("@continent", country.Continent);
@@ -189,7 +187,6 @@ namespace WorldDatabase
                 cmd.Parameters.AddWithValue("@population", country.Population);
                 cmd.Parameters.AddWithValue("@governmentform", country.GovernmentForm);
                 cmd.Parameters.AddWithValue("@headofstate", country.HeadOfState);
-                cmd.Parameters.AddWithValue("@capital", country.Capital);
                 cmd.Connection = conn;
                 conn.Open();
                 try

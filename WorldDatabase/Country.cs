@@ -16,7 +16,7 @@ namespace WorldDatabase
         public double Population { get; set; }
         public String GovernmentForm { get; set; }
         public String HeadOfState { get; set; }
-        public City Capital { get; set; }
+        //public City Capital { get; set; }
 
         public Country() { }
         //public Country(parameters) 
